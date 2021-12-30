@@ -34,12 +34,12 @@ def energy_spent():
     if remain >= 0:
         var.set(remain)
     else:
-        tkinter.messagebox.showerror(title="操", message="沒體力了啦幹")
+        tkinter.messagebox.showerror(title="！", message="沒體力了")
         yes_or_no = tkinter.messagebox.askquestion(title="該怎辦呢？", message="要睡覺回復體力嗎？")
         if yes_or_no == "yes":
             clear_today()
         else:
-            tkinter.messagebox.showerror(title="不行喔", message="給我去睡覺")
+            tkinter.messagebox.showerror(title="不行喔", message="請睡覺")
             clear_today()
 
 
