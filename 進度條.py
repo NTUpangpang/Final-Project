@@ -2,7 +2,6 @@ import tkinter as tk
 
 # 放一個顯示"/ 100"的 label 
 # 放一個會隨著選擇動作體力改變的值
-import
 mywindow = tk.Tk()
 
 mywindow.title("體力計算機")
