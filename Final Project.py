@@ -60,7 +60,7 @@ while running:
             running = False
     if main_menu:
         screen.blit(start_img, [0, 0])  # start_img改成去掉start button的圖
-        start_button = Button(290, 340, image)  # image改成start button的圖
+        start_button = Button(290, 340, image)  # image改成start button的圖(位置要調整)
         if start_button.draw():
             main_menu = False
             story = True
