@@ -1,7 +1,7 @@
 import pygame
 import random
 
-FPS = 60
+FPS = 20
 display_WIDTH = 600
 display_HEIGHT = 700
 
@@ -11,29 +11,37 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-
+class Button():
+    def __init__(self,x,y,image):
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.clicked = False
+    def draw(self):
+        action = False
+        pos = pygame.mouse.get_pos()
+        if self.rect.collidepoint(pos):
+            if pygame.mouse.get_pressed()[0] and not self.clicked:
+                action = True
+                self.clicked = True
+        screen.blit(self.image,self.rect)
+        return action
+    
 pygame.init()
 screen = pygame.display.set_mode((display_WIDTH, display_HEIGHT))
 pygame.display.set_caption("Final Project")
 time = pygame.time.Clock()
 screen.fill(WHITE)
 
+start_img = pygame.image.load("/Users/qiuweixiang/start_img.jpg")
+start_button = Button(0,0,start_img)
+bg_img = pygame.image.load("/Users/qiuweixiang/bg_img.jpg")
 
-# 以下需加入圖片
-image = pygame.image.load("sqrt.png")
-image_2 = pygame.image.load("test.png")
-screen.blit(image_2, [0, 0])
-screen.blit(image, [100, 550])
-rect_1 = pygame.Rect(100, 550, 100, 100)
-screen.blit(image, [300, 550])
-rect_2 = pygame.Rect(300, 550, 100, 100)
-screen.blit(image, [500, 550])
-rect_3 = pygame.Rect(500, 550, 100, 100)
-screen.blit(image, [550, 450])
-rect_4 = pygame.Rect(550, 450, 100, 100)
 
-pygame.display.update()
 
+
+main_menu = True
 running = True
 step1 = 0
 step2 = 0
@@ -44,9 +52,25 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
+    if main_menu == True:
+        pygame.display.update()
+        if start_button.draw():
+            main_menu = False
+    else:# 以下需加入圖片
+        screen.blit(bg_img,(0,0))
+        image = pygame.image.load("/Users/qiuweixiang/sqrt.png")
+        screen.blit(image, [100, 550])
+        rect_1 = pygame.Rect(100, 550, 100, 100)
+        screen.blit(image, [300, 550])
+        rect_2 = pygame.Rect(300, 550, 100, 100)
+        screen.blit(image, [500, 550])
+        rect_3 = pygame.Rect(500, 550, 100, 100)
+        screen.blit(image, [550, 450])
+        rect_4 = pygame.Rect(550, 450, 100, 100)
+        screen.blit(image, [150, 150])
         font_name = pygame.font.match_font('arial')
         font = pygame.font.Font(font_name, 16)
+        pygame.display.update()
         # text1 = font.render('%s %%' % str(int((step % 200) / 200*100)), True, RED)
 
         # 精力條
