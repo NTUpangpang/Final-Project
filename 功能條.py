@@ -54,6 +54,10 @@ while True:
         sur.blit(text_surface, text_rect)
 
 
+    # def choose_a_task(sur, size, x, y):
+        # font = pygame.font.Font()
+
+
     #  顯示
     screen = pygame.display.set_mode((display_WIDTH, display_HEIGHT))
     pygame.display.set_caption("Final Project")
@@ -67,7 +71,11 @@ while True:
     show_remain(screen, str(pressure), 14, 115, 36)
     show_remain(screen, str(blood_flow), 14, 115, 62)
     show_remain(screen, str(grease), 14, 115, 88)
+    # 各數值標籤
+    show_remain(screen, "Energy", 14, 145, 10)
+    show_remain(screen, "Pressure", 14, 150, 36)
+    show_remain(screen, "Blood_flow", 14, 155, 62)
+    show_remain(screen, "Grease", 14, 145, 88)
     pygame.display.update()
 
 # 要製作按鈕可以改變各數值的值：秀出三個選項(都可以點，分別有各數值的改變量)，點任意按鈕，會讓數值條的數值改變，然後按鈕消失。
-
