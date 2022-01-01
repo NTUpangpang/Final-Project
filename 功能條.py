@@ -10,7 +10,7 @@ display_HEIGHT = 700
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 127)  # SpringGreen1
 
-FPS = 50
+FPS = 20
 time = pygame.time.Clock()
 
 # 各數值初始値
