@@ -9,6 +9,7 @@ display_HEIGHT = 700
 # color used
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 127)  # SpringGreen1
+BLUE = (0, 191, 255)  # DeepSkyBlue1
 
 FPS = 50
 time = pygame.time.Clock()
@@ -54,8 +55,13 @@ while True:
         sur.blit(text_surface, text_rect)
 
 
-    # def choose_a_task(sur, size, x, y):
-        # font = pygame.font.Font()
+    def draw_day(sur, text, size, x, y):
+        font = pygame.font.Font(font_name, size)
+        text_surface = font.render(text, True, BLUE)
+        text_rect = text_surface.get_rect()
+        text_rect.centerx = x
+        text_rect.top = y
+        sur.blit(text_surface, text_rect)
 
 
     #  顯示
@@ -74,8 +80,12 @@ while True:
     # 各數值標籤
     show_remain(screen, "Energy", 14, 145, 10)
     show_remain(screen, "Pressure", 14, 150, 36)
-    show_remain(screen, "Blood flow", 14, 155, 62)
+    show_remain(screen, "Blood Flow", 14, 155, 62)
     show_remain(screen, "Grease", 14, 145, 88)
+    # 天數
+    draw_day(screen, "Day", 20, 540, 15)  # 這個不會變動
+    draw_day(screen, "1", 20, 570, 15)  # 這個會隨按鈕改變
+
     pygame.display.update()
 
 # 要製作按鈕可以改變各數值的值：秀出三個選項(都可以點，分別有各數值的改變量)，點任意按鈕，會讓數值條的數值改變，然後按鈕消失。
