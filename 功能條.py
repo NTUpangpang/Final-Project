@@ -74,7 +74,7 @@ while True:
     # 各數值標籤
     show_remain(screen, "Energy", 14, 145, 10)
     show_remain(screen, "Pressure", 14, 150, 36)
-    show_remain(screen, "Blood_flow", 14, 155, 62)
+    show_remain(screen, "Blood flow", 14, 155, 62)
     show_remain(screen, "Grease", 14, 145, 88)
     pygame.display.update()
 
