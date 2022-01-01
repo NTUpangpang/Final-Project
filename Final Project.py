@@ -20,6 +20,7 @@ SPRINGGREEN = (0, 255, 127)
 DEEPSKYBLUE = (0, 191, 255)
 WHITE = (255, 255, 255)
 
+
 # 建立資料類別
 class Button():
     # 設定初始輸入值
@@ -28,7 +29,6 @@ class Button():
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
 
     # 建立按鈕
     def draw_button(self):
@@ -43,7 +43,6 @@ class Button():
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos):
                     return waiting
-
 
     # 建立選項
     def draw_option(option_1, option_2, option_3, option_4, option_5, num_1, num_2, num_3):
@@ -320,7 +319,7 @@ def ending():
     loss_energy = 0
     day = 1
     outcome = pygame.image.load(result[outcome])
-    outcome= Button(outcome, 0, 0)
+    outcome = Button(outcome, 0, 0)
     if outcome.draw_button():
         main_menu = True
 
