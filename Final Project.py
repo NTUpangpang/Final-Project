@@ -2,6 +2,7 @@ import pygame
 import random
 import sys
 
+
 # 設定基本數值
 FPS = 60
 DISPLAY_WIDTH = 600
@@ -344,8 +345,6 @@ result = ["15. 000.jpg", "16. 001.jpg", "17. 010.jpg", "18. 011.jpg", "19. 100.j
           "20. 101.jpg", "21. 110.jpg", "22. 111.jpg", "23. do_nothing.jpg"]
 
 running = True
-main_menu = True
-story = False
 while running:
     time.tick(FPS)
     for event in pygame.event.get():
@@ -371,3 +370,4 @@ while running:
 
 pygame.quit()
 sys.exit()
+
