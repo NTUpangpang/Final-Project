@@ -69,4 +69,5 @@ while True:
     show_remain(screen, str(grease), 14, 115, 88)
     pygame.display.update()
 
-# 要製作按鈕可以改變各數值的值
+# 要製作按鈕可以改變各數值的值：秀出三個選項(都可以點，分別有各數值的改變量)，點任意按鈕，會讓數值條的數值改變，然後按鈕消失。
+
