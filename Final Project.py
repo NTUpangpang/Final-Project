@@ -2,7 +2,6 @@ import pygame
 import random
 import sys
 
-
 # 設定基本數值
 FPS = 60
 DISPLAY_WIDTH = 600
@@ -334,7 +333,7 @@ font_name = pygame.font.match_font("arial")
 start_img = pygame.image.load("starting.jpg")
 start_button_img = pygame.image.load("start_button.png")
 story_img = pygame.image.load("story.jpg")
-bg_img = pygame.image.load("background.jpg")
+bg_img = pygame.image.load("background.png")
 refresh_img = pygame.image.load("refresh.png")
 sleep_img = pygame.image.load("sleep.png")
 option = ["0. washing_head.jpg", "1. porn.jpg", "2. Vtuber.jpg", "3. McDonald's.jpg",
@@ -345,6 +344,8 @@ result = ["15. 000.jpg", "16. 001.jpg", "17. 010.jpg", "18. 011.jpg", "19. 100.j
           "20. 101.jpg", "21. 110.jpg", "22. 111.jpg", "23. do_nothing.jpg"]
 
 running = True
+main_menu = True
+story = False
 while running:
     time.tick(FPS)
     for event in pygame.event.get():
@@ -370,4 +371,3 @@ while running:
 
 pygame.quit()
 sys.exit()
-
