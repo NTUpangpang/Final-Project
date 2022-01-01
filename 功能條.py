@@ -42,7 +42,7 @@ while True:
         pygame.draw.rect(screen, WHITE, outline_rect, 2)
 
 
-    font_name = pygame.font.match_font("arial")
+    font_name = pygame.font.match_font("arial")  # 設定字體
 
 
     def show_remain(sur, text, size, x, y):  # 顯示剩餘數值
