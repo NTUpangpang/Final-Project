@@ -10,7 +10,7 @@ display_HEIGHT = 700
 WHITE = (255, 255, 255)
 GREEN = (0, 255, 127)  # SpringGreen1
 
-FPS = 20
+FPS = 50
 time = pygame.time.Clock()
 
 # 各數值初始値
@@ -22,6 +22,9 @@ grease = 50
 # 數值條的長寬
 BAR_LENGTH = 100
 BAR_WIDTH = 20
+
+# 字體設定
+font_name = pygame.font.match_font("arial")
 
 while True:
     time.tick(FPS)
@@ -40,9 +43,6 @@ while True:
         fill_rect = pygame.Rect(x, y, fill, BAR_WIDTH)
         pygame.draw.rect(screen, GREEN, fill_rect)
         pygame.draw.rect(screen, WHITE, outline_rect, 2)
-
-
-    font_name = pygame.font.match_font("arial")  # 設定字體
 
 
     def show_remain(sur, text, size, x, y):  # 顯示剩餘數值
@@ -68,3 +68,5 @@ while True:
     show_remain(screen, str(blood_flow), 14, 115, 62)
     show_remain(screen, str(grease), 14, 115, 88)
     pygame.display.update()
+
+# 要製作按鈕可以改變各數值的值
