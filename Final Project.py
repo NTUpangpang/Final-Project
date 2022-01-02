@@ -73,9 +73,10 @@ class Button():
                     elif option_5.rect.collidepoint(event.pos):
                         return -2
 
+    # 建立結局
     def draw_ending(self):
         screen.blit(self.image, self.rect)
-        draw_text("點擊畫面重新開始遊戲...", 30, 430, 660, BLACK)
+        draw_text("點擊畫面重新開始遊戲...", 20, 490, 670, BLACK)
         pygame.display.update()
         waiting = True
         while waiting:
