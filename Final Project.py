@@ -1,6 +1,7 @@
 import pygame
 import random
 import sys
+import os
 
 # 設定基本數值
 FPS = 60
@@ -16,6 +17,7 @@ grease = 50
 day = 1
 
 # 建立需要使用的顏色
+BLACK = (0, 0, 0)
 SPRINGGREEN = (0, 255, 127)
 DEEPSKYBLUE = (0, 191, 255)
 WHITE = (255, 255, 255)
@@ -71,6 +73,20 @@ class Button():
                     elif option_5.rect.collidepoint(event.pos):
                         return -2
 
+    def draw_ending(self):
+        screen.blit(self.image, self.rect)
+        draw_text("點擊畫面重新開始遊戲...", 30, 430, 660, BLACK)
+        pygame.display.update()
+        waiting = True
+        while waiting:
+            time.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos):
+                    return waiting
+
 
 # 建立進度條
 def draw_bar(data, x, y):
@@ -93,9 +109,19 @@ def show_bar():
     draw_bar(grease, 5, 88)
 
 
-# 建立剩餘數值
+# 建立數值(英文和數字)
 def draw_index(text, size, x, y, color):
-    font = pygame.font.Font(font_name, size)
+    font = pygame.font.Font(font_name_en, size)
+    text_surface = font.render(text, True, color)
+    text_rect = text_surface.get_rect()
+    text_rect.centerx = x
+    text_rect.top = y
+    screen.blit(text_surface, text_rect)
+
+
+# 建立文字(中文)
+def draw_text(text, size, x, y, color):
+    font = pygame.font.Font(font_name_cn, size)
     text_surface = font.render(text, True, color)
     text_rect = text_surface.get_rect()
     text_rect.centerx = x
@@ -290,7 +316,7 @@ def function(selection):
 
 
 def ending():
-    global loss_energy, day, main_menu
+    global loss_energy, day, main_menu, restart
     outcome = -1
     if pressure < 50:
         if blood_flow < 50:
@@ -320,15 +346,19 @@ def ending():
     day = 1
     outcome = pygame.image.load(result[outcome])
     outcome = Button(outcome, 0, 0)
-    if outcome.draw_button():
+    if outcome.draw_ending():
         main_menu = True
+        restart = True
 
 
 pygame.init()
 screen = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.display.set_caption("Hair or Fail?")
 time = pygame.time.Clock()
-font_name = pygame.font.match_font("arial")
+font_name_en = pygame.font.match_font("arial")
+font_name_cn = os.path.join("font.ttf")
+icon_img = pygame.image.load("icon.jpg")
+pygame.display.set_icon(icon_img)
 start_img = pygame.image.load("starting.jpg")
 start_button_img = pygame.image.load("start_button.png")
 story_img = pygame.image.load("story.jpg")
@@ -344,6 +374,7 @@ result = ["15. 000.jpg", "16. 001.jpg", "17. 010.jpg", "18. 011.jpg", "19. 100.j
 
 running = True
 main_menu = True
+restart = False
 story = False
 while running:
     time.tick(FPS)
@@ -354,8 +385,11 @@ while running:
         screen.blit(start_img, [0, 0])
         start_button = Button(start_button_img, 150, 296)
         if start_button.draw_button():
-            main_menu = False
-            story = True
+            if restart:
+                main_menu = False
+            else:
+                main_menu = False
+                story = True
     elif story:
         intro = Button(story_img, 0, 0)
         if intro.draw_button():
