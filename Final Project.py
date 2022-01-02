@@ -326,7 +326,7 @@ def ending():
 
 pygame.init()
 screen = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
-pygame.display.set_caption("Final Project")
+pygame.display.set_caption("Hair or Fail?")
 time = pygame.time.Clock()
 font_name = pygame.font.match_font("arial")
 start_img = pygame.image.load("starting.jpg")
