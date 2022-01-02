@@ -353,6 +353,7 @@ def ending():
 
 
 pygame.init()
+pygame.mixer.init()
 screen = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.display.set_caption("Hair or Fail?")
 time = pygame.time.Clock()
@@ -360,6 +361,9 @@ font_name_en = pygame.font.match_font("arial")
 font_name_cn = os.path.join("font.ttf")
 icon_img = pygame.image.load("icon.jpg")
 pygame.display.set_icon(icon_img)
+pygame.mixer.music.load("music.wav")
+pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.play(-1)
 start_img = pygame.image.load("starting.jpg")
 start_button_img = pygame.image.load("start_button.png")
 story_img = pygame.image.load("story.jpg")
