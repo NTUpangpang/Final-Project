@@ -44,6 +44,7 @@ class Button():
                     pygame.quit()
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN and self.rect.collidepoint(event.pos):
+                    click.play()
                     return waiting
 
     # 建立選項
@@ -63,14 +64,19 @@ class Button():
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if option_1.rect.collidepoint(event.pos) and check_energy(num_1):
+                        click.play()
                         return num_1
                     elif option_2.rect.collidepoint(event.pos) and check_energy(num_2):
+                        click.play()
                         return num_2
                     elif option_3.rect.collidepoint(event.pos) and check_energy(num_3):
+                        click.play()
                         return num_3
                     elif option_4.rect.collidepoint(event.pos) and check_energy(-1):
+                        click.play()
                         return -1
                     elif option_5.rect.collidepoint(event.pos):
+                        click.play()
                         return -2
 
     # 建立結局
@@ -364,6 +370,8 @@ pygame.display.set_icon(icon_img)
 pygame.mixer.music.load("music.wav")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1)
+click = pygame.mixer.Sound("click.wav")
+pygame.mixer.Sound.set_volume(click, 0.5)
 start_img = pygame.image.load("starting.jpg")
 start_button_img = pygame.image.load("start_button.png")
 story_img = pygame.image.load("story.jpg")
